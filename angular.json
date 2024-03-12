@@ -23,8 +23,8 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "baseHref": "/time-display-app",
-              "outputPath": "/docs"
+              "baseHref": "/time-display-app/browser/",
+              "outputPath": "docs"
             }
           },
           "options": {
