@@ -17,15 +17,15 @@ const SETTING_STORAGE_KEY = 'time-display-app-should-save';
   providedIn: 'root',
 })
 export class ScheduleService {
-  config: WritableSignal<string> = signal(`2024-03-12
-  8:30 [tomato] Mifgash
-  9:10 [orange] Core
-  9:50 [gold] Snack
-  10:00 [lightgreen] Chug
-  10:30 [cornflowerblue] Holidays
-  11:00 [mediumpurple] Tefilah
-  11:25 [white] Clean up
-  end 11:30`);
+  config: WritableSignal<string> = signal(`2024-05-17
+8:30 [tomato] Item 1
+9:10 [orange] Item 2
+9:50 [gold] Item 3
+10:00 [lightgreen] Item 4
+10:30 [cornflowerblue] Item 5
+11:00 [mediumpurple] Item 6
+11:25 [white] Item 7
+end 11:30`);
   items: Signal<Schedule> = computed(() => this.parser.parse(this.config()));
   hdate: Signal<string> = computed(() =>
     new HDate(this.items()[0].startTime.toJSDate()).render('en')
