@@ -22,7 +22,9 @@
               "namedChunks": false,
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false
+              "sourceMap": false,
+              "baseHref": "/time-display-app",
+              "outputPath": "/docs"
             }
           },
           "options": {
