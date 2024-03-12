@@ -9,6 +9,7 @@ import {
 import { ParserService } from './parser.service';
 import { HDate } from '@hebcal/core';
 import { Schedule } from '../schedule/schedule';
+import { DemoService } from './demo.service';
 
 const STORAGE_KEY = 'time-display-app-config';
 const SETTING_STORAGE_KEY = 'time-display-app-should-save';
@@ -17,15 +18,7 @@ const SETTING_STORAGE_KEY = 'time-display-app-should-save';
   providedIn: 'root',
 })
 export class ScheduleService {
-  config: WritableSignal<string> = signal(`2024-05-17
-8:30 [tomato] Item 1
-9:10 [orange] Item 2
-9:50 [gold] Item 3
-10:00 [lightgreen] Item 4
-10:30 [cornflowerblue] Item 5
-11:00 [mediumpurple] Item 6
-11:25 [white] Item 7
-end 11:30`);
+  config: WritableSignal<string> = signal("");
   items: Signal<Schedule> = computed(() => this.parser.parse(this.config()));
   hdate: Signal<string> = computed(() =>
     new HDate(this.items()[0].startTime.toJSDate()).render('en')
@@ -33,7 +26,7 @@ end 11:30`);
   date: Signal<Date> = computed(() => this.items()[0].startTime.toJSDate());
   shouldSaveToLocalStorage: WritableSignal<boolean> = signal(true);
 
-  constructor(private parser: ParserService) {
+  constructor(private parser: ParserService, private demoService: DemoService) {
     effect(() => {
       if (this.shouldSaveToLocalStorage()) {
         localStorage.setItem(STORAGE_KEY, this.config());
@@ -42,6 +35,9 @@ end 11:30`);
     effect(() => {
       localStorage.setItem(SETTING_STORAGE_KEY, this.shouldSaveToLocalStorage() ? "true" : "false");
     })
+    if(!this.config()) {
+      this.config.set(this.demoService.makeDemoData());
+    }
   }
 
   init() {

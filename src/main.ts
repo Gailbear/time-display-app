@@ -6,7 +6,6 @@ import { ParserService } from './app/services/parser.service';
 import { CommonModule } from '@angular/common';
 import { ScheduleService } from './app/services/schedule.service';
 import { ConfigComponent } from './app/config/config.component';
-import { DemoService } from './app/services/demo.service';
 
 @Component({
   selector: 'app-root',
@@ -36,10 +35,9 @@ import { DemoService } from './app/services/demo.service';
   `,
 })
 export class App implements OnInit {
-  constructor(public schedule: ScheduleService, private demoService: DemoService) {}
+  constructor(public schedule: ScheduleService) {}
   ngOnInit() {
     this.schedule.init();
-    this.demoService.makeDemoData();
   }
 }
 
