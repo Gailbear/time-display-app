@@ -1,0 +1,9 @@
+<div class="schedule">
+  <div class="now" [style]="nowStyle()"></div>
+  <app-schedule-item
+    [item]="item"
+    *ngFor="let item of schedule"
+  ></app-schedule-item>
+</div>
+<pre>
+</pre>

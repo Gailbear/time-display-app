@@ -1,0 +1,9 @@
+.past {
+  text-decoration: line-through;
+  opacity: 75%;
+}
+
+.comment {
+  color: #333;
+}
+

@@ -1,0 +1,6 @@
+
+<div [style]="style()" [ngClass]="clazz()">
+  {{ item().title }}
+  <span *ngIf="future()" class="comment">in {{until()}}</span>
+</div>
+
