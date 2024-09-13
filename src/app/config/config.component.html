@@ -1,9 +1,11 @@
 <div class="right-corner">
   <textarea *ngIf="open()" rows="10" [formControl]="configControl"></textarea>
+  <input *ngIf="linkOpen()" [formControl]="linkControl">
   <div class="buttons">
     <label *ngIf="open()">
     <input type="checkbox" [formControl]="localStorageControl" />
     Save to Local Storage</label>
     <button (click)="toggleConfig()"><i class="bi bi-gear-fill"></i></button>
+    <button (click)="getLink()"><i class="bi bi-link"></i></button>
   </div>
 </div>

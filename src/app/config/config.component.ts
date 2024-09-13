@@ -20,10 +20,12 @@ import { Subscription } from 'rxjs';
 })
 export class ConfigComponent implements OnInit, OnDestroy {
   open: WritableSignal<boolean> = signal(false);
+  linkOpen: WritableSignal<boolean> = signal(false);
   btnText: WritableSignal<string> = signal('Configure');
 
   configControl = new FormControl('');
   localStorageControl = new FormControl(true);
+  linkControl = new FormControl('');
   subscriptions = new Subscription();
 
   constructor(private schedule: ScheduleService) {
@@ -56,5 +58,12 @@ export class ConfigComponent implements OnInit, OnDestroy {
 
   toggleConfig() {
     this.open.set(!this.open());
+  }
+
+  getLink() {
+    this.linkOpen.set(!this.linkOpen());
+    if(this.linkOpen()) {
+      this.linkControl.setValue(this.schedule.getLink());
+    }
   }
 }
